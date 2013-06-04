@@ -11,7 +11,7 @@
 
 function display_help()
 {
-  echo <<<EOF
+	echo <<<EOF
 Glial Installer
 ------------------
 Options
@@ -545,10 +545,15 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	system("ln -s ".$installDir."/repository/synapse/system ".$installDir."/system");
 	system("ln -s ".$installDir."/repository/glial/Glial ".$installDir."/library/Glial");
 	
+	//to update
+	system("cd ".$installDir."/webroot/js; wget http://code.jquery.com/jquery-latest.min.js");
+	
+	system("cp -ar ".$installDir."/repository/Init-Glial/configuration/* ".$installDir."/configuration");
+	system("cp -ar ".$installDir."/repository/Init-Glial/webroot/index.php ".$installDir."/webroot/index.php");
+	
+	
 	//http://code.jquery.com/jquery-latest.min.js
 }
-
-
 
 /**
  * processes the installer
@@ -588,7 +593,6 @@ function process( $argv )
 			}
 		}
 		
-		
 	}
 
 	if ( $help )
@@ -621,5 +625,6 @@ function process( $argv )
 }
 
 process( $argv );
+
 
 
