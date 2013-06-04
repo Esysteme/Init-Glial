@@ -1,0 +1,73 @@
+#
+# Configuration pour www.estrildidae.net
+#
+
+
+<VirtualHost *:80>
+        DocumentRoot /home/www/species/webroot
+        ServerName www.estrildidae.net
+        ServerAdmin aurelien@esysteme.com
+        <Directory /home/www/species>
+                Order Allow,Deny
+                Allow from all
+        </Directory>
+
+        <Directory /home/www/species/webroot>
+                Order Allow,Deny
+                Allow from all
+                Options +FollowSymlinks
+                Options -Indexes
+                AllowOverride None
+                <IfModule mod_rewrite.c>
+                        RewriteEngine On
+                        RewriteCond %{REQUEST_FILENAME} !-d
+                        RewriteCond %{REQUEST_FILENAME} !-f
+                        RewriteRule ^(.*)$ index.php?path=$1 [QSA,L]
+                </IfModule>
+
+        </Directory>
+
+
+        <Directory /home/www/species/tmp>
+                RemoveHandler .php .phtml .php3
+                RemoveType .php .phtml .php3
+                php_flag engine off
+        </Directory>
+
+        <Directory /home/www/species/webroot/image>
+                RemoveHandler .php .phtml .php3
+                RemoveType .php .phtml .php3
+                php_flag engine off
+        </Directory>
+
+
+        <Directory /home/www/species/webroot/js>
+                RemoveHandler .php .phtml .php3
+                RemoveType .php .phtml .php3
+                php_flag engine off
+        </Directory>
+
+
+        <Directory /home/www/species/webroot/file>
+                RemoveHandler .php .phtml .php3
+                RemoveType .php .phtml .php3
+                php_flag engine off
+        </Directory>
+
+
+        <Directory /home/www/species/webroot/video>
+                RemoveHandler .php .phtml .php3
+                RemoveType .php .phtml .php3
+                php_flag engine off
+        </Directory>
+
+
+        <Directory /home/www/species/webroot/css>
+                RemoveHandler .php .phtml .php3
+                RemoveType .php .phtml .php3
+                php_flag engine off
+        </Directory>
+
+
+</VirtualHost>
+
