@@ -546,13 +546,35 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	system("ln -s ".$installDir."/repository/glial/Glial ".$installDir."/library/Glial");
 	
 	//to update
-	system("cd ".$installDir."/webroot/js; wget http://code.jquery.com/jquery-latest.min.js");
+	system("cd ".$installDir."/webroot/js; wget -q http://code.jquery.com/jquery-latest.min.js");
 	
 	system("cp -ar ".$installDir."/repository/Init-Glial/configuration/* ".$installDir."/configuration");
 	system("cp -ar ".$installDir."/repository/Init-Glial/webroot/index.php ".$installDir."/webroot/index.php");
 	
 	
+	system("cp -ar ".$installDir."/repository/Init-Glial/apache/root.dev.htacess ".$installDir."/.htaccess");
+	system("cp -ar ".$installDir."/repository/Init-Glial/apache/webroot.dev.htacess ".$installDir."/webroot/.htaccess");
+	
+	
+	system("cd ".$installDir."; chown www-data:www-data -R *");
+	
+	system("cd ".$installDir."/application/webroot/; php index.php administration init");
+	
+
+	system("find ".$installDir." -type f -exec chmod 440 {} \;;");
+	system("find ".$installDir." -type d -exec chmod 550 {} \;;");
+	
+	system("find ".$installDir."/tmp -type f -exec chmod 660 {} \;;");
+	system("find ".$installDir."/tmp -type d -exec chmod 770 {} \;;");
+
 	//http://code.jquery.com/jquery-latest.min.js
+	
+	
+	system("find ".$installDir."/tmp -type d -exec chmod 770 {} \;;");
+	
+	//test table and access right
+	
+	out("Glial has been installed successfully !","success");
 }
 
 /**
@@ -625,6 +647,5 @@ function process( $argv )
 }
 
 process( $argv );
-
 
 
