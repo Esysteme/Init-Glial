@@ -36,14 +36,18 @@ define('DS', DIRECTORY_SEPARATOR);
  * When using custom settings be sure to use the DS and do not add a trailing DS.
  */
 //The full path to the directory which holds "app", WITHOUT a trailing DS.
-define('ROOT', dirname(dirname(__FILE__)));
+
+define('ROOT', dirname(dirname(dirname(dirname(dirname(realpath(__FILE__)))))));
+
+
+//echo "ROOT: ".ROOT."\n"; 
 
 //temp directory
 define("TMP", ROOT . DS . "tmp".DS);
 define("DATA", ROOT . DS . "data".DS);
 
 //The actual directory name for the "app".
-define('APP_DIR', dirname(dirname(__FILE__))."/application");
+define('APP_DIR', dirname(dirname(__FILE__))."");
 
 //The actual directory name for the "config".
 define('CONFIG', ROOT . DS . "configuration" . DS);
@@ -58,10 +62,12 @@ define('LIBRARY', ROOT . DS . "library" . DS);
 define('CORE_PATH', ROOT . DS . "system" . DS);
 define('LIB', CORE_PATH . "lib" . DS);
 
+//echo "CORE_PATH: ".CORE_PATH."\n"; 
 //The absolute path to the webroot directory.
 define('WEBROOT_DIR', basename(dirname(__FILE__)) . DS);
 
 
+//echo "WEBROOT_DIR: ".WEBROOT_DIR."\n"; die();
 /*
   $path = explode("=", $_SERVER['QUERY_STRING']);
   $www_root = str_replace($path[1], "", $_SERVER['REQUEST_URI']);
@@ -69,8 +75,12 @@ define('WEBROOT_DIR', basename(dirname(__FILE__)) . DS);
  * 
  * 
  */
+
+require(CONFIG."webroot.config.php");
 //define('WWW_ROOT', '/backup/species/');
-define('WWW_ROOT', "http://www.estrildidae.net/");
+
+
+//define('WWW_ROOT', "http://www.estrildidae.net/");
 
 define('FARM1', "http://farm1.gdol.eu/");
 
