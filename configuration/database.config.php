@@ -4,7 +4,7 @@
  * Database configuration
  *
  */
-define('SQL_DRIVER','\glial\synapse\model\mysql');
+define('SQL_DRIVER','\glial\synapse\model\mysqli');
 define('SQL_PERSISTENT',false);
 define('SQL_HOSTNAME',"localhost");
 define('SQL_USER',"");
