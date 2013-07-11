@@ -8,7 +8,6 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  */
- //test2
 
 function display_help()
 {
@@ -524,11 +523,11 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	system("mkdir -p ".$installDir."/help");
 	system("mkdir -p ".$installDir."/library");
 	system("mkdir -p ".$installDir."/tmp");
-	system("mkdir -p ".$installDir."/webroot/js");
-	system("mkdir -p ".$installDir."/webroot/css");
-	system("mkdir -p ".$installDir."/webroot/file");
-	system("mkdir -p ".$installDir."/webroot/video");
-	system("mkdir -p ".$installDir."/webroot/image");
+	system("mkdir -p ".$installDir."/application/webroot/js");
+	system("mkdir -p ".$installDir."/application//webroot/css");
+	system("mkdir -p ".$installDir."/application//webroot/file");
+	system("mkdir -p ".$installDir."/application//webroot/video");
+	system("mkdir -p ".$installDir."/application//webroot/image");
 	system("mkdir -p ".$installDir."/tmp/acl");
 	system("mkdir -p ".$installDir."/tmp/crop");
 	system("mkdir -p ".$installDir."/tmp/database");
@@ -559,7 +558,7 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	
 	system("cd ".$installDir."; chown www-data:www-data -R *");
 	
-	system("cd ".$installDir."/application/webroot/; php index.php administration init");
+	//system("cd ".$installDir."/application/webroot/; php index.php administration init");
 	
 
 	system("find ".$installDir." -type f -exec chmod 440 {} \;;");
@@ -576,6 +575,11 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	//test table and access right
 	
 	out("Glial has been installed successfully !","success");
+	out("To finish install update the path in ".$installDir."/configuration/webroot.config.php","info");
+	out("Set database informations in ".$installDir."/configuration/database.config.php","info");
+	out("execute 'php ".$installDir."/application/webroot/index.php administration admin_table' (set table cache)","info");
+	out("execute 'php ".$installDir."/application/webroot/index.php administration admin_init' (set the rights)","info");
+	out("Now you can access to you project by the url !","info");
 }
 
 /**
