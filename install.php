@@ -524,10 +524,10 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	system("mkdir -p ".$installDir."/library");
 	system("mkdir -p ".$installDir."/tmp");
 	system("mkdir -p ".$installDir."/application/webroot/js");
-	system("mkdir -p ".$installDir."/application//webroot/css");
-	system("mkdir -p ".$installDir."/application//webroot/file");
-	system("mkdir -p ".$installDir."/application//webroot/video");
-	system("mkdir -p ".$installDir."/application//webroot/image");
+	system("mkdir -p ".$installDir."/application/webroot/css");
+	system("mkdir -p ".$installDir."/application/webroot/file");
+	system("mkdir -p ".$installDir."/application/webroot/video");
+	system("mkdir -p ".$installDir."/application/webroot/image");
 	system("mkdir -p ".$installDir."/tmp/acl");
 	system("mkdir -p ".$installDir."/tmp/crop");
 	system("mkdir -p ".$installDir."/tmp/database");
@@ -546,14 +546,14 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	system("ln -s ".$installDir."/repository/glial/Glial ".$installDir."/library/Glial");
 	
 	//to update
-	system("cd ".$installDir."/webroot/js; wget -q http://code.jquery.com/jquery-latest.min.js");
+	system("cd ".$installDir."/application/webroot/js; wget -q http://code.jquery.com/jquery-latest.min.js");
 	
 	system("cp -ar ".$installDir."/repository/Init-Glial/configuration/* ".$installDir."/configuration");
-	system("cp -ar ".$installDir."/repository/Init-Glial/webroot/index.php ".$installDir."/webroot/index.php");
+	system("cp -ar ".$installDir."/repository/Init-Glial/webroot/index.php ".$installDir."/application/webroot/index.php");
 	
 	
 	system("cp -ar ".$installDir."/repository/Init-Glial/apache/root.dev.htacess ".$installDir."/.htaccess");
-	system("cp -ar ".$installDir."/repository/Init-Glial/apache/webroot.dev.htacess ".$installDir."/webroot/.htaccess");
+	system("cp -ar ".$installDir."/repository/Init-Glial/apache/webroot.dev.htacess ".$installDir."/application/webroot/.htaccess");
 	
 	
 	system("cd ".$installDir."; chown www-data:www-data -R *");
