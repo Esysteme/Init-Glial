@@ -37,8 +37,7 @@ define('DS', DIRECTORY_SEPARATOR);
  */
 //The full path to the directory which holds "app", WITHOUT a trailing DS.
 
-define('ROOT', dirname(dirname(dirname(realpath(__FILE__)))));
-
+define('ROOT',readlink(dirname(dirname(__FILE__)));
 
 //echo "ROOT: ".ROOT."\n"; 
 
