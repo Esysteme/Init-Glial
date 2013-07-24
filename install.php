@@ -563,7 +563,7 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	system("cp -ar ".$installDir."/repository/Init-Glial/apache/webroot.dev.htacess ".$installDir."/application/webroot/.htaccess");
 	
 	
-	system("cd ".$installDir."; chown www-data:www-data -R *");
+	system("cd ".$installDir.";cd ..; chown www-data:www-data -R *");
 	
 	//system("cd ".$installDir."/application/webroot/; php index.php administration init");
 	
