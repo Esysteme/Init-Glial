@@ -536,11 +536,11 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	}
 	else
 	{
-		system("mkdir -p ".$installDir."/application/webroot/js");
-		system("mkdir -p ".$installDir."/application/webroot/css");
-		system("mkdir -p ".$installDir."/application/webroot/file");
-		system("mkdir -p ".$installDir."/application/webroot/video");
-		system("mkdir -p ".$installDir."/application/webroot/image");
+		//system("mkdir -p ".$installDir."/application/webroot/js");
+		//system("mkdir -p ".$installDir."/application/webroot/css");
+		//system("mkdir -p ".$installDir."/application/webroot/file");
+		//system("mkdir -p ".$installDir."/application/webroot/video");
+		//system("mkdir -p ".$installDir."/application/webroot/image");
 	}
 	
 	
