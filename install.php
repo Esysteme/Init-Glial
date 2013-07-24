@@ -484,20 +484,7 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	system("mkdir -p ".$installDir."/repository");
 
 
-	if ($Apps !== "Esysteme/new")
-	{
-		$tab = explode("/",$Apps);
-		if (count($tab) !== 2)
-		{
-			die(out("You're application doesnt respect the format 'user/repository'","error"));
-		}
-		else
-		{
-			$link_to_git = "git clone https://github.com/".$Apps.".git";
-			out($link_to_git."...","info");
-			system("cd ".$installDir."/repository; ".$link_to_git);
-		}
-	}
+
 	
 	$link_to_git = "git clone https://github.com/Esysteme/synapse.git";
 	out($link_to_git."...","info");
@@ -523,11 +510,7 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	system("mkdir -p ".$installDir."/help");
 	system("mkdir -p ".$installDir."/library");
 	system("mkdir -p ".$installDir."/tmp");
-	system("mkdir -p ".$installDir."/application/webroot/js");
-	system("mkdir -p ".$installDir."/application/webroot/css");
-	system("mkdir -p ".$installDir."/application/webroot/file");
-	system("mkdir -p ".$installDir."/application/webroot/video");
-	system("mkdir -p ".$installDir."/application/webroot/image");
+
 	system("mkdir -p ".$installDir."/tmp/acl");
 	system("mkdir -p ".$installDir."/tmp/crop");
 	system("mkdir -p ".$installDir."/tmp/database");
@@ -535,6 +518,30 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	system("mkdir -p ".$installDir."/tmp/photos_in_wait");
 	system("mkdir -p ".$installDir."/tmp/picture");
 	system("mkdir -p ".$installDir."/tmp/translations");
+	
+	
+	if ($Apps !== "Esysteme/new")
+	{
+		$tab = explode("/",$Apps);
+		if (count($tab) !== 2)
+		{
+			die(out("You're application doesnt respect the format 'user/repository'","error"));
+		}
+		else
+		{
+			$link_to_git = "git clone https://github.com/".$Apps.".git";
+			out($link_to_git."...","info");
+			system("cd ".$installDir."/repository; ".$link_to_git);
+		}
+	}
+	else
+	{
+		system("mkdir -p ".$installDir."/application/webroot/js");
+		system("mkdir -p ".$installDir."/application/webroot/css");
+		system("mkdir -p ".$installDir."/application/webroot/file");
+		system("mkdir -p ".$installDir."/application/webroot/video");
+		system("mkdir -p ".$installDir."/application/webroot/image");
+	}
 	
 	
 	system("cd ".$installDir."; echo 'Glial 2.0' > index.php");
