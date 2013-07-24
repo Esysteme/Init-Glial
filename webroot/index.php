@@ -27,6 +27,10 @@ error_reporting(-1);
 ini_set('display_errors', 1);
 
 
+//to know if we are in cli
+define('ISCLI', PHP_SAPI === 'cli');
+
+
 //Use the DS to separate the directories in other defines
 define('DS', DIRECTORY_SEPARATOR);
 
