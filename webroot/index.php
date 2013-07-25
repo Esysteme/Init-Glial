@@ -28,7 +28,7 @@ ini_set('display_errors', 1);
 
 
 //to know if we are in cli
-define('ISCLI', PHP_SAPI === 'cli');
+define('IS_CLI', PHP_SAPI === 'cli');
 
 
 //Use the DS to separate the directories in other defines
@@ -39,29 +39,36 @@ define('DS', DIRECTORY_SEPARATOR);
  * a directory layout other than the way it is distributed.
  * When using custom settings be sure to use the DS and do not add a trailing DS.
  */
-//The full path to the directory which holds "app", WITHOUT a trailing DS.
 
-
-
-if (ISCLI)
+if (IS_CLI)
 {
-	define('ROOT',dirname($_SERVER['OLDPWD']));
+	if (substr($_SERVER["SCRIPT_FILENAME"],0,1) === "/")
+	{
+		define('ROOT',dirname(dirname(dirname(htmlspecialchars($_SERVER["SCRIPT_FILENAME"], ENT_QUOTES, "utf-8")))));
+		define('APP_DIR',dirname(dirname(htmlspecialchars($_SERVER["SCRIPT_FILENAME"], ENT_QUOTES, "utf-8"))));
+	}
+	else
+	{
+		define('ROOT',dirname(dirname(dirname($_SERVER["PWD"]."/".$_SERVER["SCRIPT_FILENAME"]))));
+		define('APP_DIR',dirname(dirname($_SERVER["PWD"]."/".$_SERVER["SCRIPT_FILENAME"])));
+	}
 }
 else
 {
 	define('ROOT',dirname(dirname(dirname(htmlspecialchars($_SERVER["SCRIPT_FILENAME"], ENT_QUOTES, "utf-8")))));
+	define('APP_DIR',dirname(dirname(htmlspecialchars($_SERVER["SCRIPT_FILENAME"], ENT_QUOTES, "utf-8"))));
 }
 
 
-
 //echo "ROOT: ".ROOT."\n"; 
+//echo "APP_DIR: ".APP_DIR."\n"; 
 
 //temp directory
 define("TMP", ROOT . DS . "tmp".DS);
 define("DATA", ROOT . DS . "data".DS);
 
 //The actual directory name for the "app".
-define('APP_DIR', dirname(dirname(__FILE__))."");
+
 
 //The actual directory name for the "config".
 define('CONFIG', ROOT . DS . "configuration" . DS);
