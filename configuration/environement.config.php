@@ -6,9 +6,11 @@
  * developement => true
  * production => false
  */
-define('ENVIRONEMENT',false);
 
-
+if (! defined('ENVIRONEMENT'))
+{
+    define("ENVIRONEMENT", false);
+}
 
 
 
