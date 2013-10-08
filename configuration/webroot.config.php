@@ -16,3 +16,6 @@ if (! defined('WWW_ROOT'))
 {
     define('WWW_ROOT', "/glial/");
 }
+
+
+date_default_timezone_set("Europe/Paris");
