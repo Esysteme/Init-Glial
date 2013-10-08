@@ -583,7 +583,7 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	
 	out("Glial has been installed successfully !","success");
 	out("To finish install update the path in ".$installDir."/configuration/webroot.config.php","info");
-	out("Set database informations in ".$installDir."/configuration/database.config.php","info");
+	out("Set database informations in ".$installDir."/configuration/db.config.ini.php","info");
 	out("execute 'php ".$installDir."/application/webroot/index.php administration admin_table' (set table cache)","info");
 	out("execute 'php ".$installDir."/application/webroot/index.php administration admin_init' (set the rights)","info");
 	out("Now you can access to you project by the url !","info");
