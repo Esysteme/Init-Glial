@@ -109,10 +109,10 @@ function checkPlatform( $quiet )
 		$warnings['apc_cli'] = true;
 	}
 	
-	$res = shell_exec ("dpkg --status git");
+	$res = shell_exec ("git --version");
 	
-	$tab = explode (PHP_EOL, $res);
-	if (count($tab) == 1)
+	$tab = explode (" ", $res);
+	if (! preg_match("/^git version [1]\.[0-9]+\.[0-9]$/i")
 	{
 		$errors['git'] = true;
 	}
