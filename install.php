@@ -548,7 +548,7 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	
 	out("create symlink","info");
 	
-	system("cd ".$installDir."; ln -s ".$installDir."/repository/Estrildidae/application application");
+	system("cd ".$installDir."; ln -s ".$installDir."/repository/".$tab[1]."/application application");
 	system("ln -s ".$installDir."/repository/synapse/system ".$installDir."/system");
 	system("ln -s ".$installDir."/repository/glial/Glial ".$installDir."/library/Glial");
 	
