@@ -92,11 +92,11 @@ function checkPlatform( $quiet )
 	{
 		$errors['gd'] = true;
 	}
-	
+	/*
 	if ( !extension_loaded( 'mysqli' ) )
 	{
 		$errors['mysqli'] = true;
-	}
+	}*/
 	
 
 	if ( !extension_loaded( 'openssl' ) )
