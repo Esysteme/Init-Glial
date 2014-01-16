@@ -1,5 +1,6 @@
 #
 # Configuration pour www.estrildidae.net
+# just an example for your production
 #
 
 
@@ -67,7 +68,5 @@
                 RemoveType .php .phtml .php3
                 php_flag engine off
         </Directory>
-
-
 </VirtualHost>
 

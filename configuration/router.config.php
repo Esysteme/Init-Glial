@@ -1,5 +1,12 @@
 <?php
 
-define('ROUTE_DEFAULT', "en/home/index/");
+
+if (! defined('ROUTE_DEFAULT'))
+{
+    define('ROUTE_DEFAULT', "en/home/index/");
+}
+
+
+
 
 

@@ -92,11 +92,11 @@ function checkPlatform( $quiet )
 	{
 		$errors['gd'] = true;
 	}
-	
+	/*
 	if ( !extension_loaded( 'mysqli' ) )
 	{
 		$errors['mysqli'] = true;
-	}
+	}*/
 	
 
 	if ( !extension_loaded( 'openssl' ) )
@@ -109,10 +109,10 @@ function checkPlatform( $quiet )
 		$warnings['apc_cli'] = true;
 	}
 	
-	$res = shell_exec ("dpkg --status git");
+	$res = shell_exec ("git --version");
 	
-	$tab = explode (PHP_EOL, $res);
-	if (count($tab) == 1)
+	
+	if (! preg_match("/^git version [1]\.[0-9]+\.[0-9]$/i", $res, $gg))
 	{
 		$errors['git'] = true;
 	}
@@ -548,7 +548,7 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	
 	out("create symlink","info");
 	
-	system("cd ".$installDir."; ln -s ".$installDir."/repository/Estrildidae/application application");
+	system("cd ".$installDir."; ln -s ".$installDir."/repository/".$tab[1]."/application application");
 	system("ln -s ".$installDir."/repository/synapse/system ".$installDir."/system");
 	system("ln -s ".$installDir."/repository/glial/Glial ".$installDir."/library/Glial");
 	
@@ -582,10 +582,10 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	//test table and access right
 	
 	out("Glial has been installed successfully !","success");
-	out("To finish install update the path in ".$installDir."/configuration/webroot.config.php","info");
-	out("Set database informations in ".$installDir."/configuration/database.config.php","info");
-	out("execute 'php ".$installDir."/application/webroot/index.php administration admin_table' (set table cache)","info");
-	out("execute 'php ".$installDir."/application/webroot/index.php administration admin_init' (set the rights)","info");
+	out("1 - To finish install update the path in ".$installDir."/configuration/webroot.config.php","info");
+	out("2 - Set database informations in ".$installDir."/configuration/db.config.ini.php","info");
+	out("3 - execute 'php ".$installDir."/application/webroot/index.php administration admin_table' (set table cache)","info");
+	out("4 - execute 'php ".$installDir."/application/webroot/index.php administration admin_init' (set the rights)","info");
 	out("Now you can access to you project by the url !","info");
 }
 
