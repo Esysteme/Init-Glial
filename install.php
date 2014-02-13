@@ -525,7 +525,7 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	system("mkdir -p ".$installDir."/tmp/translations");
 	
 	
-	if ($Apps !== "Esysteme/new")
+	if ($Apps !== "new")
 	{
 		$tab = explode("/",$Apps);
 		if (count($tab) !== 2)
@@ -541,11 +541,11 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	}
 	else
 	{
-		//system("mkdir -p ".$installDir."/application/webroot/js");
-		//system("mkdir -p ".$installDir."/application/webroot/css");
-		//system("mkdir -p ".$installDir."/application/webroot/file");
-		//system("mkdir -p ".$installDir."/application/webroot/video");
-		//system("mkdir -p ".$installDir."/application/webroot/image");
+		system("mkdir -p ".$installDir."/application/webroot/js");
+		system("mkdir -p ".$installDir."/application/webroot/css");
+		system("mkdir -p ".$installDir."/application/webroot/file");
+		system("mkdir -p ".$installDir."/application/webroot/video");
+		system("mkdir -p ".$installDir."/application/webroot/image");
 	}
 	
 	
@@ -630,7 +630,11 @@ function process( $argv )
 			{
 				$Apps = trim( substr( $val, 14 ) );
 			}
-		}
+        }
+        else
+        {
+            $Apps = "new";
+        }
 		
 	}
 
