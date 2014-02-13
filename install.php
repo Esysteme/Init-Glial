@@ -112,7 +112,7 @@ function checkPlatform( $quiet )
 	$res = shell_exec ("git --version");
 	
 	
-	if (! preg_match("/^git version [1]\.[0-9]+\.[0-9]$/i", $res, $gg))
+	if (! preg_match("/^git version [1]\.[0-9]+\.[0-9]/i", $res, $gg))
 	{
 		$errors['git'] = true;
 	}
