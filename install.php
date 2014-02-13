@@ -481,7 +481,12 @@ function getStreamContext()
 function installGlial($installDir, $Apps="Esysteme/new")
 {
 
-	system("mkdir -p ".$installDir."/repository");
+    
+    $installDir  = realpath( $installDir ) ? realpath( $installDir ) : getcwd();
+
+    
+    
+    system("mkdir -p ".$installDir."/repository");
 
 
 
