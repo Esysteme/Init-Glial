@@ -534,14 +534,19 @@ function installGlial($installDir, $Apps="Esysteme/new")
 		}
 		else
 		{
-			$link_to_git = "git clone https://github.com/".$Apps.".git";
+            // case where path exist
+            
+            $link_to_git = "git clone https://github.com/".$Apps.".git";
 			out($link_to_git."...","info");
-			system("cd ".$installDir."/repository; ".$link_to_git);
+            system("cd ".$insitallDir."/repository; ".$link_to_git);
+            
+	        system("cd ".$installDir."; ln -s ".$installDir."/repository/".$tab[1]."/application application");
 		}
 	}
 	else
 	{
-		system("mkdir -p ".$installDir."/application/webroot/js");
+        // case of a new apps
+        system("mkdir -p ".$installDir."/application/webroot/js");
 		system("mkdir -p ".$installDir."/application/webroot/css");
 		system("mkdir -p ".$installDir."/application/webroot/file");
 		system("mkdir -p ".$installDir."/application/webroot/video");
@@ -553,7 +558,6 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	
 	out("create symlink","info");
 	
-	system("cd ".$installDir."; ln -s ".$installDir."/repository/".$tab[1]."/application application");
 	system("ln -s ".$installDir."/repository/synapse/system ".$installDir."/system");
 	system("ln -s ".$installDir."/repository/glial/Glial ".$installDir."/library/Glial");
 	
