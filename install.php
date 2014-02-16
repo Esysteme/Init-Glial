@@ -478,7 +478,7 @@ function getStreamContext()
  * installs Glial to the current working directory
  */
 
-function installGlial($installDir, $Apps="Esysteme/new")
+function installGlial($installDir, $Apps="new")
 {
 
     
@@ -486,9 +486,7 @@ function installGlial($installDir, $Apps="Esysteme/new")
 
     
     
-    system("mkdir -p ".$installDir."/repository");
-
-
+    	system("mkdir -p ".$installDir."/repository");
 
 	
 	$link_to_git = "git clone https://github.com/Esysteme/synapse.git";
@@ -545,8 +543,8 @@ function installGlial($installDir, $Apps="Esysteme/new")
 	}
 	else
 	{
-        // case of a new apps
-        system("mkdir -p ".$installDir."/application/webroot/js");
+        	// case of a new apps
+        	system("mkdir -p ".$installDir."/application/webroot/js");
 		system("mkdir -p ".$installDir."/application/webroot/css");
 		system("mkdir -p ".$installDir."/application/webroot/file");
 		system("mkdir -p ".$installDir."/application/webroot/video");
