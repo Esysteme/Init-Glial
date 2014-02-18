@@ -536,7 +536,7 @@ function installGlial($installDir, $Apps="new")
             
             $link_to_git = "git clone https://github.com/".$Apps.".git";
 			out($link_to_git."...","info");
-            system("cd ".$insitallDir."/repository; ".$link_to_git);
+            system("cd ".$installDir."/repository; ".$link_to_git);
             
 	        system("cd ".$installDir."; ln -s ".$installDir."/repository/".$tab[1]."/application application");
 		}
